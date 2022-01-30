@@ -1,0 +1,139 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 style="color: whitesmoke">share your apartment with us </h2>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row mt-50">
+    <div class="col-md-8 col-md-offset-2">
+        <h2 class="text-center heading-separator">Fill in the fields below to post an apartment</h2>
+        <form method="post" th:action="@{'/apartments/{id}' (id=${apartment?.id})}" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm-12">
+                  <input id="id" type="hidden" name="id" th:value="${apartment?.id}">
+                    <div class="form-group">
+                        <label for="title">Apartment title:</label>
+                        <input type="text"
+                               class="form-control"
+                               id="title"
+                               name="title"
+                               th:value="${apartment?.title}"
+                               placeholder="Enter title"
+                               required=""
+                               autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Apartment location:</label>
+                        <input type="text"
+                               class="form-control"
+                               id="location"
+                               name="location"
+                               th:value="${apartment?.location}"
+                               placeholder="Enter location"
+                               required=""
+                               autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <label for="area">Apartment area:</label>
+                        <input type="text"
+                               class="form-control"
+                               id="area"
+                               name="area"
+                               th:value="${apartment?.area}"
+                               placeholder="Enter area"
+                               required=""
+                               autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <label for="year">Apartment year of construction:</label>
+                        <input type="text"
+                               class="form-control"
+                               id="year"
+                               name="year"
+                               th:value="${apartment?.year}"
+                               placeholder="Enter year"
+                               required=""
+                               autofocus="">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Long description for apartment:</label>
+                        <input type="text"
+                               class="form-control"
+                               id="description"
+                               name="description"
+                               th:value="${apartment?.description}"
+                               placeholder="Enter description"
+                               required=""
+                               autofocus="">
+                    </div>
+                    <div class="selectpicker-checkboxes-radiobtn mt-50">
+                        <label>Select apartment photographer from the list below:</label>
+                        <div class="row">
+                            <div class="col-sm-4">
+                            <select name="photographerId" class="selectpicker" required="required" autofocus="">
+                                <option
+                                        th:each="photographer : ${photographers}"
+                                        th:value="${photographer.getId()}"
+                                        th:text="${photographer.getName()} + ' ' + ${photographer.getSurname()}">
+                                </option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="selectpicker-checkboxes-radiobtn mt-50">
+                        <label>Select apartment manufacturers from the list below:</label>
+                        <div class="row">
+                            <div class="col-sm-4">
+                            <select name="manufacturerId" class="selectpicker" multiple="multiple" required="required" autofocus="">
+                                <option th:each="manufacturer : ${manufacturers}"
+                                        th:value="${manufacturer.getId()}"
+                                        th:text="${manufacturer.getNameCompany()}">
+                                </option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="selectpicker-checkboxes-radiobtn mt-50">
+                            <label>Select apartment designer from the list below:</label>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                <select name="designerId" class="selectpicker" required="" autofocus="">
+                                    <option
+                                            th:each="designer : ${designers}"
+                                            th:value="${designer.getId()}"
+                                            th:text="${designer.getName()}  + ' ' + ${designer.getSurname()}">
+                                    </option>
+                                </select>
+                            </div>
+                            </div>
+                        </div>
+                    <div class="form-group">
+                            <label for="primaryImage">Upload main image </label>
+                            <input type="file" name="primaryImage" id="primaryImage" accept="image/png, image/jpeg" required="" autofocus=""/>
+                    </div>
+                    <div class="form-group">
+                            <label>Upload extra image #1 </label>
+                            <input type="file" name="extraImage" accept="image/png, image/jpeg" required="" autofocus=""/>
+                    </div>
+                    <div class="form-group">
+                            <label>Upload extra image #2 </label>
+                            <input type="file" name="extraImage" accept="image/png, image/jpeg" required="" autofocus="" />
+                    </div>
+                    <div class="form-group">
+                            <label>Upload extra image #3 </label>
+                            <input type="file" name="extraImage" accept="image/png, image/jpeg" required="" autofocus="" />
+                </div>
+            </div>
+            <div class="text-center mt-20">
+                <button id="submit" class="btn btn-green" type="submit">Submit</button>
+                <a type="button" class="btn btn-block" href="/apartments">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+</th:block>

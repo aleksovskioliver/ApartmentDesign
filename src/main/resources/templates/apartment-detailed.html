@@ -1,0 +1,60 @@
+<th:block xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+    <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 style="color: whitesmoke" th:text="${apartment.title}"></h2>
+            </div>
+        </div>
+    </div>
+
+<main id="main" class="site-main">
+    <section class="site-section subpage-site-section section-project">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="project-img">
+                        <img th:src="@{${'/img/apartments' + apartment.id + '/' + apartment.primaryImage}}" class="img-res" alt=""/>
+                    </div><!-- /.project-img -->
+                    <div class="project-img">
+                        <img th:src="@{${'/img/apartments' + apartment.id + '/' + apartment.extraImage1}}" class="img-res" alt=""/>
+                    </div><!-- /.project-img -->
+                    <div class="project-img">
+                        <img th:src="@{${'/img/apartments' + apartment.id + '/' + apartment.extraImage2}}" class="img-res" alt=""/>
+                    </div><!-- /.project-img -->
+                    <div class="project-img">
+                        <img th:src="@{${'/img/apartments' + apartment.id + '/' + apartment.extraImage3}}" class="img-res" alt=""/>
+                    </div><!-- /.project-img -->
+
+                </div>
+                <aside class="col-md-4">
+                    <div class="project-info">
+                        <h5>Description:</h5>
+                        <p class="project-description" th:text="${apartment.description}"></p>
+
+                        <div >
+                            <b>Apartment area:</b> <p class="font-color-black" th:text="${apartment.area}"></p>
+                            <b>Year of construction:</b> <p class="font-color-black" th:text="${apartment.year}"></p>
+                            <b>Apartment location: </b><p class="font-color-black" th:text="${apartment.location}"></p>
+                            <b>Apartment designer: </b><a th:href="@{'/designers/detailed/{id}' (id=${apartment.designer.getId()})}"><i class="font-color-black" th:text="${apartment.designer.name + ' ' + apartment.designer.surname}"></i></a></br>
+                            <b>Apartment photographer: </b><p class="font-color-black" th:text="${apartment.photographer.name + ' ' + apartment.photographer.surname}"></p>
+                            <b>Apartment manufacturers: </b>
+                            <ul>
+                                <li th:each="man : ${apartment.manufacturer}" th:text="${man.nameCompany}"></li>
+                            </ul>
+                        </div>
+
+                        <div class="social-links">
+                            <a class="twitter-bg" href="#"><i class="fa fa-twitter"></i></a>
+                            <a class="facebook-bg" href="#"><i class="fa fa-facebook"></i></a>
+                            <a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a>
+                            <a class="linkedin-bg" href="#"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+</main>
+</th:block>

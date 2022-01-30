@@ -1,0 +1,65 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+    <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 style="color: whitesmoke" th:text="${designer.name} + ' ' + ${designer.surname}"></h2>
+            </div>
+        </div>
+    </div>
+
+<main id="main" class="site-main">
+    <section class="site-section subpage-site-section section-project">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="project-img">
+                        <img th:src="@{${'/img/designers' + designer.id + '/' + designer.profilePicture}}" class="img-res" alt=""/>
+                    </div>
+
+                </div>
+                <aside class="col-md-4">
+                    <div class="project-info">
+                        <h5>Biography</h5>
+                        <p class="project-description" th:text="${designer.biography}"></p>
+
+                        <div class="project-date-category">
+
+                            <i class="fa fa-envelope" aria-hidden="true"></i><a th:href="'mailto:' + ${designer.contactEmail}" th:text="${designer.contactEmail}"></a></br>
+                            </br>
+                            <i class="fa fa-phone" aria-hidden="true"></i><a th:href="'tel:' + ${designer.contactPhoneNumber}" th:text="${designer.contactPhoneNumber}"> </a>
+
+                        </div>
+
+                        <div class="social-links">
+                            <a class="twitter-bg" href="#"><i class="fa fa-twitter"></i></a>
+                            <a class="facebook-bg" href="#"><i class="fa fa-facebook"></i></a>
+                            <a class="pinterest" href="#"><i class="fa fa-pinterest"></i></a>
+                            <a class="linkedin-bg" href="#"><i class="fa fa-linkedin"></i></a>
+                        </div><!-- /.social-links -->
+                    </div><!-- /.project-description -->
+                </aside>
+            </div>
+        </div>
+    </section>
+    </section>
+
+    <section class="site-section subpage-site-section section-related-projects">
+        <div class="container">
+            <div class="text-left">
+                <h2>Related Projects</h2>
+            </div>
+            <div class="row">
+                <th:block th:each="apart:${designer.apartments}">
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="portfolio-item">
+                        <img th:src="@{${'/img/apartments' + apart.id + '/' + apart.primaryImage}}" width="220" height="150"/>
+                        <h4 class="portfolio-item-title" th:text="${apart.title}"></h4>
+                        <a th:href="@{'/apartments/detailed/{id}' (id=${apart.getId()})}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</th:block>>

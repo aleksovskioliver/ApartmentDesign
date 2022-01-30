@@ -1,0 +1,75 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+
+  <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2 style="color: whitesmoke">we take care of your applications</h2>
+      </div>
+    </div>
+  </div>
+
+<div class="row mt-50">
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="text-center heading-separator">Fill in the fields below to create an application</h2>
+    <form method="post" action="/applications/add">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="area">Apartment area:</label>
+            <input type="text"
+                   class="form-control"
+                   id="area"
+                   name="area"
+                   placeholder="Enter area"
+                   required=""
+                   autofocus="">
+          </div>
+          <div class="form-group">
+            <label for="description">Apartment description:</label>
+            <input type="text"
+                   class="form-control"
+                   id="description"
+                   name="description"
+                   placeholder="Enter description"
+                   required=""
+                   autofocus="">
+          </div>
+          <div class="selectpicker-checkboxes-radiobtn mt-50">
+            <label>Choose an example apartment from the offered list</label>
+            <div class="row">
+              <div class="col-sm-4">
+                <select name="exampleApartmentsId" class="selectpicker">
+                  <option
+                          th:each="apart : ${apartments}"
+                          th:value="${apart.getId()}"
+                          th:text="${apart.title}">
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="selectpicker-checkboxes-radiobtn mt-50">
+            <label>Choose a designer from the offered list:</label>
+            <div class="row">
+              <div class="col-sm-4">
+                <select name="designersId" class="selectpicker">
+                  <option
+                          th:each="designer : ${designers}"
+                          th:value="${designer.getId()}"
+                          th:text="${designer.getName()} + ' ' + ${designer.getSurname()}">
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-20">
+        <button id="submit" class="btn btn-green" type="submit">Submit</button>
+        <a type="button" class="btn btn-block" href="/applications">Back</a>
+      </div>
+    </form>
+  </div>
+</div>
+</th:block>

@@ -1,0 +1,36 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+  <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2 style="color: whitesmoke" >log in to your account</h2>
+      </div>
+    </div>
+  </div>
+
+<div class="row mt-50">
+  <div class="col-md-8 col-md-offset-2">
+    <h2 class="text-center heading-separator">Fill in the fields below</h2>
+    <form method="post" action="/login">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="" autofocus="">
+          </div>
+        </div>
+        <div class="col-sm-12 mt-20">
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="" autofocus="">
+          </div>
+        </div>
+        <div th:text="${param.error}" class="text-danger"></div>
+      </div>
+      <div class="text-center mt-20">
+        <button id="submit" class="btn btn-green" type="submit">Sign in</button>
+      </div>
+    </form>
+    <a href="/register" class="btn btn-block btn-light">Register here</a>
+  </div>
+</div>
+</th:block>

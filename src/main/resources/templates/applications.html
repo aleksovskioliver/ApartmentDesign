@@ -1,0 +1,60 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+<div th:if="${hasError}">
+        <h5 class="text-center text-danger" th:text="${error}"></h5>
+    </div>
+
+    <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2 style="color: whitesmoke">list of your applications</h2>
+            </div>
+        </div>
+    </div>
+
+<main id="main" class="site-main">
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-12" th:if="${applications.size() > 0}">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">Date Created</th>
+                            <th scope="col">Area</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="app : ${applications}" class="cart-item">
+                            <td th:text="${app.getDateCreated()}"></td>
+                            <td th:text="${app.area}"></td>
+                            <td th:text="${app.description}"></td>
+                            <td class="text-right">
+                                <form th:action="@{'/applications/delete/{id}' (id=${app.getId()})}"
+                                      th:method="POST">
+                                    <button type="submit" class="btn btn-sm btn-danger delete-application">
+                                        <i class="fa fa-trash">Delete</i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col mb-3">
+            <div class="row">
+                    <a href="/applications/add-form" class="btn btn-block btn-dark add-application-btn">
+                        Create new application
+                    </a>
+            </div>
+        </div>
+
+    </div>
+</main>
+</th:block>
+
+
+
+

@@ -1,0 +1,63 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+
+  <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2 style="color: whitesmoke">register your account</h2>
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <h1 th:if="${hasError}" th:text="${error}"></h1>
+</div>
+<div class="row mt-50">
+<div class="col-md-8 col-md-offset-2">
+  <h2 class="text-center heading-separator">Fill in the fields below</h2>
+  <form method="post" action="/register">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="username">E-mail:</label>
+          <input type="username" class="form-control" id="username" name="username" placeholder="Username" required="" autofocus="">
+        </div>
+      </div>
+      <div class="col-sm-12 mt-20">
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="" autofocus="">
+        </div>
+      </div>
+      <div class="col-sm-12 mt-20">
+        <div class="form-group">
+          <label for="repeatedPassword">Repeat Password:</label>
+          <input type="password" class="form-control" id="repeatedPassword" name="repeatedPassword" placeholder="repeatedPassword" required="" autofocus="">
+        </div>
+      </div>
+      <div class="col-sm-12 mt-20">
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="name" required="" autofocus="">
+        </div>
+      </div>
+      <div class="col-sm-12 mt-20">
+        <div class="form-group">
+          <label for="surname">Surname:</label>
+          <input type="text" class="form-control" id="surname" name="surname" placeholder="surname" required="" autofocus="">
+        </div>
+      </div>
+      <div class="col-sm-12 mt-20">
+        <div class="form-group">
+          <label for="mobileNumber">Phone number:</label>
+          <input type="text" class="form-control" id="mobileNumber" name="mobileNumber" placeholder="mobileNumber" required="" autofocus="">
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-20">
+      <button class="btn btn-green" type="submit">Sign in</button>
+    </div>
+  </form>
+  <a href="/login" class="btn btn-block btn-light">Already have an account? Login here!</a>
+</div>
+</div>
+</th:block>

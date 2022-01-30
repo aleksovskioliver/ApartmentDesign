@@ -1,0 +1,50 @@
+<th:block xmlns:th="http://www.thymeleaf.org">
+  <div id="hero" class="hero overlay subpage-hero portfolio-hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2 style="color: whitesmoke">your future apartment design belongs here</h2>
+      </div>
+    </div>
+  </div>
+<main id="main" class="site-main">
+    <section class="site-section subpage-site-section section-portfolio">
+      <div class="container">
+
+        <div id="grid" class="row">
+          <th:block th:each="apart:${apartments}">
+          <div class="col-lg-3 col-md-4 col-xs-6">
+
+            <div class="portfolio-item">
+                <img th:src="@{${'/img/apartments' + apart.id + '/' + apart.primaryImage}}" class="img-res" alt="" />
+              <h4 class="portfolio-item-title" th:text="${apart.title}"></h4>
+              <a th:href="@{'/apartments/detailed/{id}' (id=${apart.getId()})}"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+              <form th:action="@{'/apartments/{id}/delete' (id=${apart.getId()})}" th:method="DELETE">
+                  <button type="submit" class="btn-danger">
+                      <i> Delete</i>
+                  </button>
+              </form>
+            </th:block>
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+              <a th:href="@{'/apartments/{id}/edit' (id=${apart.getId()})}"><i type="button" class="btn btn-block"></i>EDIT</a>
+            </th:block>
+          </div>
+          </th:block>
+        </div>
+
+        <div class="text-center">
+          <a class="btn btn-gray" href="#" id="loadMore">Load More</a>
+        </div>
+
+      </div>
+      <div class="col mb-3">
+        <div class="row">
+          <a href="/apartments/add-form" class="btn btn-block btn-dark add-application-btn">
+            Add new apartment
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</th:block>
