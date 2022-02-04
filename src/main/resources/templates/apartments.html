@@ -38,6 +38,7 @@
         </div>
 
       </div>
+      <th:block sec:authorize="hasRole('ROLE_ADMIN')">
       <div class="col mb-3">
         <div class="row">
           <a href="/apartments/add-form" class="btn btn-block btn-dark add-application-btn">
@@ -45,6 +46,7 @@
           </a>
         </div>
       </div>
+      </th:block>
     </section>
   </main>
 </th:block>
