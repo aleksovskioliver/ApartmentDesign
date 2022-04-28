@@ -11,6 +11,47 @@
         </div>
     </div>
 
+    <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+        <div class="container mb-4">
+            <div class="row">
+                <div class="col-12" th:if="${adminapp.size() > 0}">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">Date Created</th>
+                                <th scope="col">Area</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">User Contact</th>
+                                <th scope="col">Designer</th>
+                                <th scope="col">Like Apartment</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="app : ${adminapp}" class="cart-item">
+                                <td th:text="${app.getDateCreated()}"></td>
+                                <td th:text="${app.area}"></td>
+                                <td th:text="${app.description}"></td>
+                                <td th:text="${app.user.mobileNumber}"></td>
+                                <td th:text="${app.designers.get(0).contactPhoneNumber}"></td>
+                                <td th:text="${app.exampleApartments.get(0).title}"></td>
+                                <td class="text-right">
+                                    <form th:action="@{'/applications/delete/{id}' (id=${app.getId()})}"
+                                          th:method="POST">
+                                        <button type="submit" class="btn btn-sm btn-danger delete-application">
+                                            <i class="fa fa-trash">Delete</i>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </th:block>
+
 <main id="main" class="site-main">
     <div class="container mb-4">
         <div class="row">

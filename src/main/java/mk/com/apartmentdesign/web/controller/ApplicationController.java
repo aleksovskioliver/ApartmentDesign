@@ -39,6 +39,8 @@ public class ApplicationController {
         }
         String username = req.getRemoteUser ();
         List<Application> applications = this.applicationService.findAllByUsername (username);
+        List<Application> adminapp = this.applicationService.findAll ();
+        model.addAttribute ("adminapp",adminapp);
         model.addAttribute ("applications",applications);
         model.addAttribute ("bodyContent","applications");
         return "master-template";
